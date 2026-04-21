@@ -7,7 +7,7 @@
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Framework](https://img.shields.io/badge/Framework-PyTorch-red)
-![Accuracy](https://img.shields.io/badge/Accuracy-95.96%25-success)
+![Accuracy](https://img.shields.io/badge/Accuracy-93.44%25-success)
 ![Model](https://img.shields.io/badge/Model-Pre--trained-9cf)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -112,7 +112,7 @@ This project builds and trains a PyTorch-based neural network to predict the ele
   Ready-to-use PyTorch neural network
 
 - ✅ **High Accuracy**  
-  95-96% test accuracy achieved
+  93.44% test accuracy achieved
 
 - ✅ **Clean Dataset**  
   9,568 samples, zero missing values
@@ -274,40 +274,52 @@ with torch.no_grad():
 <th>Description</th>
 </tr>
 <tr>
-<td><strong>R² Score</strong></td>
-<td><code>> 0.95</code></td>
+<td><strong>R² Score (Test)</strong></td>
+<td><code>0.9343512465</code></td>
 <td>✅ Excellent</td>
-<td>Explains 95%+ of variance</td>
+<td>Explains 93.44% of variance</td>
 </tr>
 <tr>
 <td><strong>Accuracy (Test)</strong></td>
-<td><code>95-96%</code></td>
+<td><code>93.44%</code></td>
 <td>✅ Excellent</td>
 <td>High on unseen data</td>
 </tr>
 <tr>
-<td><strong>MAE</strong></td>
-<td><code>< 4.0 MW</code></td>
+<td><strong>Training MSE</strong></td>
+<td><code>20.3281</code></td>
 <td>✅ Good</td>
-<td>Avg error ~3-4 MW</td>
+<td>Mean squared error on training</td>
+</tr>
+<tr>
+<td><strong>Testing MSE</strong></td>
+<td><code>18.7850</code></td>
+<td>✅ Good</td>
+<td>Mean squared error on testing</td>
+</tr>
+<tr>
+<td><strong>MAE</strong></td>
+<td><code>3.46 MW</code></td>
+<td>✅ Good</td>
+<td>Mean absolute error</td>
 </tr>
 <tr>
 <td><strong>RMSE</strong></td>
-<td><code>< 5.0 MW</code></td>
+<td><code>4.33 MW</code></td>
 <td>✅ Good</td>
 <td>Root mean square error</td>
 </tr>
 <tr>
 <td><strong>MAPE</strong></td>
-<td><code>< 3%</code></td>
+<td><code>0.76%</code></td>
 <td>✅ Excellent</td>
-<td>Percentage error</td>
+<td>Mean absolute percentage error</td>
 </tr>
 <tr>
-<td><strong>Generalization</strong></td>
-<td><code>No Overfit</code></td>
-<td>✅ Stable</td>
-<td>Train/Test loss similar</td>
+<td><strong>Success Rate</strong></td>
+<td><code>99.90%</code></td>
+<td>✅ Outstanding</td>
+<td>Predictions within 5% accuracy</td>
 </tr>
 </table>
 
@@ -315,12 +327,10 @@ with torch.no_grad():
 
 | Set | Accuracy | Details |
 |-----|----------|---------|
-| **Training** | ~97-98% | Based on R² score |
-| **Testing** | ~95-96% | On unseen data |
-| **Success Rate** | ~90%+ | Within 5% of actual |
-| **Avg Error** | ±3-4 MW | Prediction deviation |
-
-</details>
+| **Training** | 93.05% | R² score on training data |
+| **Testing** | 93.44% | R² score on test data |
+| **Success Rate** | 99.90% | Within 5% of actual values |
+| **Avg Error** | 3.46 MW | Mean absolute error |
 
 ## 💡 Tips for Improvement
 
@@ -392,106 +402,6 @@ with torch.no_grad():
 **Overall Progress**: 100% ✅
 
 </details>
-
-## 📧 Important Notes & Setup Guide
-
-<details open>
-<summary><b>⚙️ Configuration & Troubleshooting</b></summary>
-
-### Pre-flight Checks
-- [ ] Python 3.8+ installed
-- [ ] Virtual environment created (recommended)
-- [ ] All dependencies from `requirements.txt` installed
-- [ ] Data folder contains `powerplant_data.csv`
-- [ ] Models folder contains `best_model.pt`
-
-### Path Configuration
-```
-✅ Data files should be in the `data/` folder
-✅ Pre-trained model is stored in the `models/` folder
-✅ Update notebook paths if folder structure differs
-✅ Use relative paths for portability
-```
-
-### Performance Tips
-- 🚀 **GPU Acceleration**: Install CUDA for PyTorch (automatic detection)
-- 💾 **Memory**: For large datasets, consider batch processing
-- ⚡ **Speed**: Pre-trained model inference is very fast (~1ms/prediction)
-- 🔧 **Training**: Full training takes ~5-10 minutes on CPU
-
-### Troubleshooting
-| Issue | Solution |
-|-------|----------|
-| `ModuleNotFoundError` | Run `pip install -r requirements.txt` |
-| `FileNotFoundError` | Check folder structure matches diagram |
-| `CUDA errors` | Use CPU or verify CUDA installation |
-| `Memory issues` | Reduce batch size or use smaller dataset |
-
-</details>
-
----
-
-## 🎯 Next Steps
-
-<details>
-<summary><b>📝 What to Do Next</b></summary>
-
-### For Beginners
-1. Open `ANN.ipynb` in Jupyter
-2. Run cells sequentially to understand the pipeline
-3. Modify hyperparameters and observe results
-4. Test with sample data
-
-### For Advanced Users
-1. Experiment with different architectures
-2. Implement cross-validation
-3. Try ensemble methods
-4. Deploy model to production
-
-### For Contributors
-1. Fork the repository
-2. Create a feature branch
-3. Make improvements (architecture, data, docs)
-4. Submit pull request with documentation
-
-</details>
-
----
-
-## 📊 Quick Reference
-
-<details>
-<summary><b>🔍 Input/Output Format</b></summary>
-
-### Model Input Format
-```python
-# Required: 4 features in order
-input = [AT, V, AP, RH]  # Temperature, Vacuum, Pressure, Humidity
-```
-
-### Feature Ranges
-| Feature | Min | Max | Unit |
-|---------|-----|-----|------|
-| **AT** (Temperature) | 1.81 | 37.11 | °C |
-| **V** (Vacuum) | 25.36 | 81.56 | cm Hg |
-| **AP** (Pressure) | 992.89 | 1033.30 | mbar |
-| **RH** (Humidity) | 25.56 | 100.16 | % |
-
-### Model Output
-```
-PE (Power Energy Output): Continuous value in MW
-Typical range: 420-480 MW
-```
-
-### Example Prediction
-```python
-# Input: AT=20°C, V=50 cm Hg, AP=1015 mbar, RH=60%
-# Output: ~450.25 MW
-```
-
-</details>
-
----
 
 **Last Updated**: April 2026  
 **Model Status**: Ready for prediction  
